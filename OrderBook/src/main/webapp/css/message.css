@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+.main{
+    background: #eee;
+    /*     border: #00c4ff 5px solid; */
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    margin-left:80px ;
+}
+.header{
+    /*     border: blue 2px solid; */
+    padding-top:10px;
+    margin-left:300px;
+}
+.title{
+    /*     border: solid 1px black; */
+    font-size: 25px;
+    margin:20px;
+    text-align: center;
+}
+.menu{
+    width: 300px;
+    /*border: solid 1px black;*/
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+.table{
+    /*     border: solid 3px red; */
+    margin-top: 60px;
+    text-align: center;
+}
+.layui-nav{
+    height: 500px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.r_div{
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:30px;
+    height:40px;
+    /*border:solid 1px red;*/
+}

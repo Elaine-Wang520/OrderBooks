@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+.main{
+    display: flex;
+    flex-direction: row;
+    /*float: left;*/
+}
+.menu{
+    /*text-align: center;*/
+    width: 300px;
+    border: solid 1px black;
+    padding-left: 100px;
+    padding-top: 150px;
+    padding-right: 100px;
+}
+.contain{
+    padding-top: 150px;
+    border: solid 1px red;
+}
+.help{
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size:25px;
+}

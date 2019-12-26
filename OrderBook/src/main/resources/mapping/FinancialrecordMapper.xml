@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.J.OrderTextBook.dao.FinancialrecordMapper" >
+  <resultMap id="BaseResultMap" type="team.J.OrderTextBook.pojo.Financialrecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookid" property="bookid" jdbcType="INTEGER" />
+    <result column="bookname" property="bookname" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="moneytotal" property="moneytotal" jdbcType="REAL" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="inputdate" property="inputdate" jdbcType="VARCHAR" />
+    <result column="buydate" property="buydate" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from financialrecord
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="team.J.OrderTextBook.pojo.Financialrecord" >
+    insert into financialrecord (id, bookid, bookname, 
+      number, price, moneytotal, 
+      userid, username, inputdate, 
+      buydate)
+    values (#{id,jdbcType=INTEGER}, #{bookid,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{price,jdbcType=REAL}, #{moneytotal,jdbcType=REAL}, 
+      #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{inputdate,jdbcType=VARCHAR}, 
+      #{buydate,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="team.J.OrderTextBook.pojo.Financialrecord" >
+    update financialrecord
+    set bookid = #{bookid,jdbcType=INTEGER},
+      bookname = #{bookname,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=REAL},
+      moneytotal = #{moneytotal,jdbcType=REAL},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      inputdate = #{inputdate,jdbcType=VARCHAR},
+      buydate = #{buydate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, bookid, bookname, number, price, moneytotal, userid, username, inputdate, 
+    buydate
+    from financialrecord
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, bookid, bookname, number, price, moneytotal, userid, username, inputdate, 
+    buydate
+    from financialrecord
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap">
+    select id, bookid, bookname, number, price, moneytotal, userid, username, inputdate,
+    buydate
+    from financialrecord limit #{page} , #{count}
+  </select>
+</mapper>

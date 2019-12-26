@@ -1,0 +1,45 @@
+*{
+	margin: 30px;
+	
+}
+.left{
+	width: 40%;
+	float: left;
+}
+h2{
+	color: cornflowerblue;
+	text-align: center;
+	font-size: x-large;
+}
+h3{
+	color: orange;
+}
+h4{
+	color:darkred;
+	
+}
+img{
+	width: 300px;
+	height: 300px;
+}
+.right{
+	padding-left: 400px;
+	padding-top: 80px;
+	width:50%;
+}
+.bottom{
+	margin-top: 100px;
+	float: left;
+	width: 100%;
+}
+.bottom p{
+	text-indent:2em
+}
+.buy{
+	margin-left: 300px;
+	float: left;
+}
+.foot{
+	width:80%;
+	display: flex;
+}

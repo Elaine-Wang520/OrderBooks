@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+.main{
+    background: #eee;
+    /*     border: #00c4ff 5px solid; */
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    margin-left:80px ;
+}
+.header{
+    /*     border: blue 2px solid; */
+    padding-top:10px;
+    margin-left:300px;
+}
+.title{
+    /*     border: solid 1px black; */
+    /*background-color: #1E9FFF;*/
+    font-size: 25px;
+    margin-top:50px;
+    margin-bottom:30px;
+
+}
+.t_users{
+    margin-bottom:30px;
+    margin-right:20px;
+}
+.t_search{
+    margin-bottom:30px;
+    margin-right:20px;
+}
+.record{
+    margin-bottom:30px;
+    margin-right:20px;
+}
+.menu{
+    width: 300px;
+    /*border: solid 1px black;*/
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+.table{
+    /*     border: solid 3px red; */
+    margin-top: 60px;
+    text-align: center;
+}
+.layui-nav{
+    height: 500px;
+}
+.formclass{
+    display: flex;
+    flex-direction: row;
+    margin-left:250px;
+    margin-top:20px;
+}
+.formspan{
+    margin: 10px;
+}
+.page a{
+    padding-left: 15px;
+}
+.footer{
+    /*text-align: center;*/
+    font-size: 20px;
+    margin-top:-30px;
+    margin-left:350px;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.J.OrderTextBook.dao.BookcartMapper" >
+  <resultMap id="BaseResultMap" type="team.J.OrderTextBook.pojo.Bookcart" >
+    <id column="xid" property="xid" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookid" property="bookid" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bookcart
+    where xid = #{xid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="team.J.OrderTextBook.pojo.Bookcart" >
+    insert into bookcart (xid, id, bookid, 
+      number)
+    values (#{xid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{bookid,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="team.J.OrderTextBook.pojo.Bookcart" >
+    update bookcart
+    set id = #{id,jdbcType=INTEGER},
+      bookid = #{bookid,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER}
+    where xid = #{xid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select xid, id, bookid, number
+    from bookcart
+    where xid = #{xid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select xid, id, bookid, number
+    from bookcart
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT book.id as bookid,bookname,author,price,press,xid,pressdate,bookcart.number as numbers
+    FROM bookcart,book
+    WHERE bookcart.id=#{id,jdbcType=INTEGER} AND bookid=book.id
+  </select>
+  <select id="deleteByxid" parameterType="java.lang.Integer">
+    delete from bookcart
+    where xid = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="deleteAll" parameterType="java.lang.Integer">
+     DELETE
+    FROM bookcart
+    WHERE id=#{id}
+  </select>
+  <select id="selectBookCartByxId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT id,bookid,number,xid
+    FROM bookcart
+    WHERE xid=#{id}
+  </select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.J.OrderTextBook.dao.BookbuyedMapper" >
+  <resultMap id="BaseResultMap" type="team.J.OrderTextBook.pojo.Bookbuyed" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookid" property="bookid" jdbcType="INTEGER" />
+    <result column="bookname" property="bookname" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="phonenum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bookbuyed
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="team.J.OrderTextBook.pojo.Bookbuyed" >
+    insert into bookbuyed (id, bookid, bookname, 
+      number, userid, username, 
+      phonenum, date, address
+      )
+    values (#{id,jdbcType=INTEGER}, #{bookid,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{phonenum,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="team.J.OrderTextBook.pojo.Bookbuyed" >
+    update bookbuyed
+    set bookid = #{bookid,jdbcType=INTEGER},
+      bookname = #{bookname,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      phonenum = #{phonenum,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, bookid, bookname, number, userid, username, phonenum, date, address
+    from bookbuyed
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, bookid, bookname, number, userid, username, phonenum, date, address
+    from bookbuyed
+  </select>
+  <select id="selectAllBuyedBooks" resultMap="BaseResultMap">
+    SELECT id, bookid, bookname,SUM(number)  number, userid, username, phonenum, DATE, address
+    FROM bookbuyed
+    GROUP BY bookid ORDER BY number DESC
+  </select>
+  <select id="selectBuyedBooksById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+SELECT bookbuyed.bookid,book.bookname,author,price,press,bookbuyed.number,bookbuyed.date,bookbuyed.username,bookbuyed.phonenum,bookbuyed.address
+FROM bookbuyed,book
+WHERE bookbuyed.userid=#{id} AND bookbuyed.bookid=book.id
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="string" >
+    select id, bookname, username, phonenum, date
+    from bookbuyed
+    where username = #{value }
+  </select>
+  <select id="selectOrderByPage" resultMap="BaseResultMap">
+    select id, bookname, username, phonenum, date
+    from bookbuyed limit #{page} , #{count}
+  </select>
+</mapper>
